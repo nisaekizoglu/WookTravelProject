@@ -1,0 +1,88 @@
+﻿@model List<WookTravelProject.Entities.Destination>
+
+<section id="section-1">
+    <div class="content-slider">
+        @{ int index = 1; }
+        @foreach (var destination in Model)
+        {
+            <input type="radio" id="banner@{@index}" class="sec-1-input" name="banner" @(index == 1 ? "checked" : "")>
+            index++;
+        }
+
+        <div class="slider">
+            @{ index = 1; }
+
+            @foreach (var item in Model)
+            {
+                <div id="top-banner-@{@index}" class="banner" style="background: url('@item.ImageUrl') no-repeat center center; background-size: cover;">
+                    <div class="banner-inner-wrapper header-text">
+                        <div class="main-caption">
+                            <h2>@item.Country</h2>
+                            <h1>@item.Title</h1>
+                            <h3 style="color: white;">@item.City</h3>
+                        </div>
+
+                        <style>
+                            .main-caption {
+                                position: relative; /* Daha esnek bir konumlandırma */
+                                top: 30%; /* Yukarıdan mesafe */
+                                left: 0%; /* Yatayda tam ortalama */
+                                transform: translateX(-50%); /* Kutuyu tam ortalamak için sola kaydırma */
+                                background: rgba(255, 255, 255, 0.1); /* Yarı saydam arka plan */
+                                backdrop-filter: blur(10px); /* Flu efekti */
+                                border-radius: 10px;
+                                padding: 20px;
+                                text-align: center;
+                                color: white;
+                                width: 80%; /* Yüzde olarak genişlik */
+                                box-sizing: border-box; /* Padding dahil genişliği ayarlama */
+                            }
+
+                                .main-caption h2,
+                                .main-caption h1,
+                                .main-caption h3 {
+                                    margin: 10px 0; /* Başlıklar arasında boşluk bırakır */
+                                }
+                        </style>
+
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="more-info">
+                                        <div class="row">
+                                            <div class="col-lg-3 col-sm-6 col-6">
+                                                <i class="fa fa-user"></i>
+                                                <h4><span>Kaç Gün Kaç Gece:</span><br>@item.DayNight Gün - @(item.DayNight-1) Gece</h4>
+                                            </div>
+                                            <div class="col-lg-3 col-sm-6 col-6">
+                                                <i class="fa fa-globe"></i>
+                                                <h4><span>Tur Kapasitesi:</span><br>@item.Capacity</h4>
+                                            </div>
+                                            <div class="col-lg-3 col-sm-6 col-6">
+                                                <i class="fa fa-home"></i>
+                                                <h4><span>Fiyat:</span><br>@item.Price</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                index++;
+            }
+
+        </div>
+        <nav>
+            <div class="controls">
+                @{ index = 1; }
+                @foreach (var destination in Model)
+                {
+                    <label for="banner@{@index}"><span class="progressbar"><span class="progressbar-fill"></span></span><span class="text">@index</span></label>
+                    index++;
+                }
+            </div>
+        </nav>
+    </div>
+</section>
+

@@ -1,0 +1,44 @@
+﻿@model WookTravelProject.Entities.Admin
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="container">
+    <div class="page-inner">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">Profil Bilgisi Düzenleme</div>
+                    </div>
+                    <div class="card-body">
+
+                        <form method="post">
+                            <label>Adınız</label>
+                            @Html.TextAreaFor(x => x.Name, new { @class = "form-control" })
+                            <br />
+                            <label>Soyadınız</label>
+                            @Html.TextAreaFor(x => x.Surname, new { @class = "form-control" })
+                            <br />
+                            <label>Email Adresiniz</label>
+                            @Html.TextAreaFor(x => x.Email, new { @class = "form-control" })
+                            <br />
+                            <label>Kullanıcı Adınız</label>
+                            @Html.TextAreaFor(x => x.Username, new { @class = "form-control" })
+                            <br />
+                            <label>Şifreniz</label>
+                            @Html.PasswordFor(x => x.Password, new { @class = "form-control" })
+                            <br />
+                            <button class="btn btn-success">Bilgileri Güncelle</button>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

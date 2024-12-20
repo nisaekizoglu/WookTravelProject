@@ -1,0 +1,114 @@
+﻿@model List<WookTravelProject.Entities.Message>
+
+@{
+    ViewBag.Title = "Sendbox";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+    int count = 0;
+}
+
+<div class="container">
+    <div class="page-inner">
+
+        <div class="row">
+            <div class="col-md-12">
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">Giden Mesaj Sayfası</div>
+                    </div>
+                    <div class="card-body">
+
+                        <table class="table mt-3">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Alıcı</th>
+                                    <th scope="col">Konu</th>
+                                    <th scope="col">Tarih</th>
+                                    <th scope="col">Durum</th>
+                                    <th scope="col">Mesajı Aç</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    count++;
+                                    <tr>
+                                        <td>@count</td>
+                                        <td>@item.ReceiverMail</td>
+                                        <td>@item.Subject</td>
+                                        <td>@item.SendDate</td>
+                                        <td>@item.IsRead</td>
+                                        <td>
+                                            <button type="button" class="btn btn-secondary openModal" data-id="@item.MessageId">Mesajı Aç</button>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+
+                        <a href="/Admin/Message/SendMessage/" class="btn btn-primary">Yeni Mesaj Gönderin</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="messageModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Mesaj Detayı</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Kapat">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h6><b>Alıcı:</b></h6>
+                <p id="receiverMail"></p>
+                <h6><b>Konu:</b></h6>
+                <p id="subject"></p>
+                <h6><b>Tarih:</b></h6>
+                <p id="sendDate"></p>
+                <h6><b>Mesaj:</b></h6>
+                <p id="content"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('.openModal').click(function () {
+            var messageId = $(this).data('id'); // Butondan mesaj ID'sini al
+
+            $.ajax({
+                url: '@Url.Action("GetMessage", "Message", new {area="Admin"})', // Mesaj içeriğini almak için API çağrısı
+                type: 'GET',
+                data: { id: messageId },
+                success: function (data) {
+                    if (data) {
+                        // Modal içeriğini doldur
+                        $('#receiverMail').text(data.receiverMail);
+                        $('#subject').text(data.subject);
+                        $('#sendDate').text(data.sendDate);
+                        $('#content').text(data.content);
+                        $('#messageModal').modal('show'); // Modali aç
+                    } else {
+                        alert('Mesaj bulunamadı.');
+                    }
+                },
+                error: function () {
+                    alert('Bir hata oluştu.');
+                }
+            });
+        });
+    });
+</script>
+
+
+

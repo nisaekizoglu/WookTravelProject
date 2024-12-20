@@ -1,0 +1,840 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.5.1\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{2A382312-64DA-4954-B355-52C4688756C2}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WookTravelProject</RootNamespace>
+    <AssemblyName>WookTravelProject</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44344</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.2.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.9.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.9\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.9\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.9\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\AdminLayoutController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CategoryController.cs" />
+    <Compile Include="Areas\Admin\Controllers\DestinationController.cs" />
+    <Compile Include="Areas\Admin\Controllers\LogOutController.cs" />
+    <Compile Include="Areas\Admin\Controllers\MessageController.cs" />
+    <Compile Include="Areas\Admin\Controllers\PaymentController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ProfileController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ReservationController.cs" />
+    <Compile Include="Context\TravelContext.cs" />
+    <Compile Include="Controllers\DefaultController.cs" />
+    <Compile Include="Controllers\ErrorPagesController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\RegisterController.cs" />
+    <Compile Include="Entities\Admin.cs" />
+    <Compile Include="Entities\Category.cs" />
+    <Compile Include="Entities\Contact.cs" />
+    <Compile Include="Entities\Destination.cs" />
+    <Compile Include="Entities\Message.cs" />
+    <Compile Include="Entities\Reservation.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202412162119521_mig2.cs" />
+    <Compile Include="Migrations\202412162119521_mig2.Designer.cs">
+      <DependentUpon>202412162119521_mig2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202412162128172_mig3.cs" />
+    <Compile Include="Migrations\202412162128172_mig3.Designer.cs">
+      <DependentUpon>202412162128172_mig3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202412201019586_mig4.cs" />
+    <Compile Include="Migrations\202412201019586_mig4.Designer.cs">
+      <DependentUpon>202412201019586_mig4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="colorlib-error-404-6\css\style.css" />
+    <Content Include="colorlib-error-404-6\index.html" />
+    <Content Include="colorlib-error-404-6\readme.txt" />
+    <Content Include="Content\bootstrap-grid.css" />
+    <Content Include="Content\bootstrap-grid.min.css" />
+    <Content Include="Content\bootstrap-grid.rtl.css" />
+    <Content Include="Content\bootstrap-grid.rtl.min.css" />
+    <Content Include="Content\bootstrap-reboot.css" />
+    <Content Include="Content\bootstrap-reboot.min.css" />
+    <Content Include="Content\bootstrap-reboot.rtl.css" />
+    <Content Include="Content\bootstrap-reboot.rtl.min.css" />
+    <Content Include="Content\bootstrap-utilities.css" />
+    <Content Include="Content\bootstrap-utilities.min.css" />
+    <Content Include="Content\bootstrap-utilities.rtl.css" />
+    <Content Include="Content\bootstrap-utilities.rtl.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\bootstrap.rtl.css" />
+    <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\PagedList.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\css\bootstrap.min.css" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\css\demo.css" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\css\fonts.css" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\css\fonts.min.css" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\css\kaiadmin.css" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\css\kaiadmin.min.css" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\css\plugins.css" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\css\plugins.min.css" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\fonts\fontawesome\fa-brands-400.svg" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\fonts\fontawesome\fa-regular-400.svg" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\fonts\fontawesome\fa-solid-900.svg" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\fonts\simple-line-icons\Simple-Line-Icons.svg" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\arashmil.jpg" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\bg-404.jpeg" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\blogpost.jpg" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\chadengle.jpg" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\examples\example1-300x300.jpg" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\examples\example1.jpeg" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\examples\example10-300x300.jpg" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\examples\example10.jpeg" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\examples\example11-300x300.jpg" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\examples\example11.jpeg" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\examples\example12-300x300.jpg" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\examples\example12.jpeg" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\examples\example2-300x300.jpg" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\examples\example2.jpeg" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\examples\example3-300x300.jpg" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\examples\example3.jpeg" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\examples\example4-300x300.jpg" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\examples\example4.jpeg" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\examples\example5-300x300.jpg" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\examples\example5.jpeg" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\examples\example6-300x300.jpg" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\examples\example6.jpeg" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\examples\example7-300x300.jpg" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\examples\example7.jpeg" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\examples\example8-300x300.jpg" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\examples\example8.jpeg" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\examples\example9-300x300.jpg" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\examples\example9.jpeg" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\examples\logo.svg" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\examples\logo1.svg" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\examples\logo2.svg" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\examples\logoinvoice.svg" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\examples\product1.jpg" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\examples\product10.jpeg" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\examples\product11.jpeg" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\examples\product12.jpeg" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\examples\product2.jpg" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\examples\product3.jpg" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\examples\product4.jpg" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\examples\product5.jpg" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\examples\product6.jpg" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\examples\product7.jpg" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\examples\product8.jpg" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\ad.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\ae.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\af.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\ag.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\ai.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\al.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\am.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\an.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\ao.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\ar.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\as.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\at.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\au.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\aw.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\ax.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\az.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\ba.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\bb.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\bd.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\be.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\bf.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\bg.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\bh.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\bi.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\bj.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\bm.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\bn.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\bo.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\br.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\bs.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\bt.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\bv.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\bw.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\by.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\bz.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\ca.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\catalonia.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\cc.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\cd.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\cf.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\cg.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\ch.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\ci.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\ck.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\cl.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\cm.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\cn.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\co.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\cr.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\cs.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\cu.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\cv.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\cx.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\cy.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\cz.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\de.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\dj.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\dk.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\dm.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\do.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\dz.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\ec.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\ee.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\eg.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\eh.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\england.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\er.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\es.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\et.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\europeanunion.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\fam.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\fi.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\fj.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\fk.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\fm.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\fo.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\fr.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\ga.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\gb.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\gd.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\ge.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\gf.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\gh.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\gi.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\gl.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\gm.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\gn.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\gp.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\gq.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\gr.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\gs.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\gt.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\gu.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\gw.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\gy.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\hk.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\hm.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\hn.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\hr.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\ht.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\hu.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\id.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\ie.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\il.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\in.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\io.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\iq.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\ir.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\is.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\it.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\jm.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\jo.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\jp.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\ke.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\kg.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\kh.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\ki.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\km.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\kn.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\kp.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\kr.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\kw.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\ky.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\kz.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\la.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\lb.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\lc.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\li.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\lk.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\lr.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\ls.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\lt.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\lu.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\lv.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\ly.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\ma.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\mc.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\md.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\me.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\mg.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\mh.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\mk.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\ml.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\mm.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\mn.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\mo.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\mp.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\mq.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\mr.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\ms.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\mt.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\mu.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\mv.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\mw.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\mx.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\my.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\mz.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\na.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\nc.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\ne.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\nf.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\ng.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\ni.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\nl.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\no.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\np.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\nr.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\nu.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\nz.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\om.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\pa.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\pe.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\pf.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\pg.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\ph.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\pk.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\pl.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\pm.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\pn.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\pr.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\ps.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\pt.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\pw.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\py.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\qa.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\re.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\readme.txt" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\ro.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\rs.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\ru.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\rw.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\sa.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\sb.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\sc.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\scotland.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\sd.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\se.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\sg.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\sh.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\si.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\sj.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\sk.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\sl.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\sm.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\sn.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\so.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\sr.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\st.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\sv.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\sy.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\sz.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\tc.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\td.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\tf.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\tg.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\th.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\tj.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\tk.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\tl.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\tm.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\tn.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\to.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\tr.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\tt.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\tv.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\tw.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\tz.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\ua.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\ug.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\um.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\us.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\uy.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\uz.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\va.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\vc.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\ve.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\vg.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\vi.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\vn.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\vu.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\wales.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\wf.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\ws.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\ye.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\yt.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\za.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\zm.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\flags\zw.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\img-shadow.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\jm_denis.jpg" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\kaiadmin\demo1.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\kaiadmin\demo2.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\kaiadmin\demo3.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\kaiadmin\demo4.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\kaiadmin\demo5.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\kaiadmin\demo6.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\kaiadmin\demo7.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\kaiadmin\demo8.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\kaiadmin\demo9.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\kaiadmin\favicon.ico" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\kaiadmin\favicon.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\kaiadmin\favicon.svg" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\kaiadmin\icon.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\kaiadmin\icon.svg" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\kaiadmin\logo_dark.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\kaiadmin\logo_dark.svg" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\kaiadmin\logo_documentation.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\kaiadmin\logo_light.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\kaiadmin\logo_light.svg" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\logoproduct.svg" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\logoproduct2.svg" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\logoproduct3.svg" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\mlane.jpg" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\profile.jpg" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\profile2.jpg" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\sauro.jpg" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\talha.jpg" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\undraw\undraw_blank_canvas_3rbb.svg" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\undraw\undraw_creative_team_r90h.svg" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\undraw\undraw_empty_xct9.svg" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\undraw\undraw_Hello_qnas.svg" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\undraw\undraw_not_found_60pq.svg" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\undraw\undraw_no_data_qbuo.svg" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\undraw\undraw_page_not_found_su7k.svg" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\undraw\undraw_sign_in_e6hj.svg" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\undraw\undraw_tabs_jf82.svg" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\undraw\undraw_Taken_if77.svg" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\undraw\undraw_update_uxn2.svg" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\undraw\undraw_upgrade_06a0.svg" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\img\visa.svg" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\js\core\bootstrap.min.js" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\js\core\jquery-3.7.1.min.js" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\js\core\popper.min.js" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\js\demo.js" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\js\kaiadmin.js" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\js\kaiadmin.min.js" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\js\plugin\bootstrap-notify\bootstrap-notify.min.js" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\js\plugin\bootstrap-tagsinput\bootstrap-tagsinput.min.js" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\js\plugin\bootstrap-toggle\bootstrap-toggle.min.js" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\js\plugin\chart-circle\circles.min.js" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\js\plugin\chart.js\chart.min.js" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\js\plugin\datatables\datatables.min.js" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\js\plugin\datepicker\bootstrap-datetimepicker.min.js" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\js\plugin\dropzone\dropzone.min.js" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\js\plugin\fullcalendar\fullcalendar.min.js" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\js\plugin\gmaps\gmaps.js" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\js\plugin\jquery-scrollbar\jquery.scrollbar.min.js" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\js\plugin\jquery.magnific-popup\jquery.magnific-popup.min.js" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\js\plugin\jquery.sparkline\jquery.sparkline.min.js" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\js\plugin\jquery.validate\jquery.validate.min.js" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\js\plugin\jsvectormap\jsvectormap.min.js" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\js\plugin\jsvectormap\world.js" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\js\plugin\list.js\list.min.js" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\js\plugin\moment\moment.min.js" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\js\plugin\owl-carousel\ajax-loader.gif" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\js\plugin\owl-carousel\owl.carousel.min.js" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\js\plugin\owl-carousel\owl.video.play.png" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\js\plugin\select2\select2.full.min.js" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\js\plugin\sortable\sortable.min.js" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\js\plugin\sticky-sidebar\sticky-sidebar.min.js" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\js\plugin\summernote\summernote-lite.min.js" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\js\plugin\sweetalert\sweetalert.min.js" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\js\plugin\webfont\webfont.min.js" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\js\setting-demo.js" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\js\setting-demo2.js" />
+    <Content Include="kaiadmin-lite-1.2.0\charts\charts.html" />
+    <Content Include="kaiadmin-lite-1.2.0\charts\sparkline.html" />
+    <Content Include="kaiadmin-lite-1.2.0\components\avatars.html" />
+    <Content Include="kaiadmin-lite-1.2.0\components\buttons.html" />
+    <Content Include="kaiadmin-lite-1.2.0\components\font-awesome-icons.html" />
+    <Content Include="kaiadmin-lite-1.2.0\components\gridsystem.html" />
+    <Content Include="kaiadmin-lite-1.2.0\components\notifications.html" />
+    <Content Include="kaiadmin-lite-1.2.0\components\panels.html" />
+    <Content Include="kaiadmin-lite-1.2.0\components\simple-line-icons.html" />
+    <Content Include="kaiadmin-lite-1.2.0\components\sweetalert.html" />
+    <Content Include="kaiadmin-lite-1.2.0\components\typography.html" />
+    <Content Include="kaiadmin-lite-1.2.0\forms\forms.html" />
+    <Content Include="kaiadmin-lite-1.2.0\icon-menu.html" />
+    <Content Include="kaiadmin-lite-1.2.0\index.html" />
+    <Content Include="kaiadmin-lite-1.2.0\maps\googlemaps.html" />
+    <Content Include="kaiadmin-lite-1.2.0\maps\jsvectormap.html" />
+    <Content Include="kaiadmin-lite-1.2.0\sidebar-style-2.html" />
+    <Content Include="kaiadmin-lite-1.2.0\starter-template.html" />
+    <Content Include="kaiadmin-lite-1.2.0\tables\datatables.html" />
+    <Content Include="kaiadmin-lite-1.2.0\tables\tables.html" />
+    <Content Include="kaiadmin-lite-1.2.0\widgets.html" />
+    <Content Include="Scripts\bootstrap.bundle.js" />
+    <Content Include="Scripts\bootstrap.bundle.min.js" />
+    <Content Include="Scripts\bootstrap.esm.js" />
+    <Content Include="Scripts\bootstrap.esm.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\css\demo.css.map" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\css\kaiadmin.css.map" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\css\plugins.css.map" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\fonts\fontawesome\fa-brands-400.eot" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\fonts\fontawesome\fa-brands-400.ttf" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\fonts\fontawesome\fa-brands-400.woff" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\fonts\fontawesome\fa-brands-400.woff2" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\fonts\fontawesome\fa-regular-400.eot" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\fonts\fontawesome\fa-regular-400.ttf" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\fonts\fontawesome\fa-regular-400.woff" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\fonts\fontawesome\fa-regular-400.woff2" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\fonts\fontawesome\fa-solid-900.eot" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\fonts\fontawesome\fa-solid-900.ttf" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\fonts\fontawesome\fa-solid-900.woff" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\fonts\fontawesome\fa-solid-900.woff2" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\fonts\simple-line-icons\Simple-Line-Icons.eot" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\fonts\simple-line-icons\Simple-Line-Icons.ttf" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\fonts\simple-line-icons\Simple-Line-Icons.woff" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\fonts\simple-line-icons\Simple-Line-Icons.woff2" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\fonts\summernote\summernote.eot" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\fonts\summernote\summernote.ttf" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\fonts\summernote\summernote.woff" />
+    <Content Include="kaiadmin-lite-1.2.0\assets\fonts\summernote\summernote.woff2" />
+    <Content Include="kaiadmin-lite-1.2.0\LICENSE" />
+    <Content Include="kaiadmin-lite-1.2.0\README.md" />
+    <Content Include="Areas\Admin\Views\AdminLayout\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminLayout\PartialHead.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminLayout\PartialSideBar.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminLayout\PartialNavbar.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminLayout\PartialFooter.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminLayout\PartialScript.cshtml" />
+    <Content Include="Areas\Admin\Views\Category\CategoryList.cshtml" />
+    <Content Include="Areas\Admin\Views\Category\CreateCategory.cshtml" />
+    <Content Include="Areas\Admin\Views\Category\UpdateCategory.cshtml" />
+    <Content Include="Areas\Admin\Views\Destination\DestinationList.cshtml" />
+    <Content Include="Areas\Admin\Views\Destination\CreateDestination.cshtml" />
+    <Content Include="Areas\Admin\Views\Destination\UpdateDestination.cshtml" />
+    <Content Include="Areas\Admin\Views\Message\Inbox.cshtml" />
+    <Content Include="Areas\Admin\Views\Message\Sendbox.cshtml" />
+    <Content Include="Areas\Admin\Views\Message\SendMessage.cshtml" />
+    <Content Include="Areas\Admin\Views\Profile\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Reservation\ReservationList.cshtml" />
+    <Content Include="Areas\Admin\Views\Reservation\CreateReservation.cshtml" />
+    <Content Include="Areas\Admin\Views\Reservation\UpdateReservation.cshtml" />
+    <Content Include="wooxtravel-1.0.0\about.html" />
+    <Content Include="wooxtravel-1.0.0\assets\css\animate.css" />
+    <Content Include="wooxtravel-1.0.0\assets\css\flex-slider.css" />
+    <Content Include="wooxtravel-1.0.0\assets\css\fontawesome.css" />
+    <Content Include="wooxtravel-1.0.0\assets\css\owl.css" />
+    <Content Include="wooxtravel-1.0.0\assets\css\templatemo-woox-travel.css" />
+    <Content Include="wooxtravel-1.0.0\assets\images\about-content-bg.jpg" />
+    <Content Include="wooxtravel-1.0.0\assets\images\about-left-image.jpg" />
+    <Content Include="wooxtravel-1.0.0\assets\images\banner-01.jpg" />
+    <Content Include="wooxtravel-1.0.0\assets\images\banner-02.jpg" />
+    <Content Include="wooxtravel-1.0.0\assets\images\banner-03.jpg" />
+    <Content Include="wooxtravel-1.0.0\assets\images\banner-04.jpg" />
+    <Content Include="wooxtravel-1.0.0\assets\images\best-01.jpg" />
+    <Content Include="wooxtravel-1.0.0\assets\images\best-02.jpg" />
+    <Content Include="wooxtravel-1.0.0\assets\images\best-03.jpg" />
+    <Content Include="wooxtravel-1.0.0\assets\images\best-04.jpg" />
+    <Content Include="wooxtravel-1.0.0\assets\images\best-05.jpg" />
+    <Content Include="wooxtravel-1.0.0\assets\images\cities-01.jpg" />
+    <Content Include="wooxtravel-1.0.0\assets\images\cities-02.jpg" />
+    <Content Include="wooxtravel-1.0.0\assets\images\cities-03.jpg" />
+    <Content Include="wooxtravel-1.0.0\assets\images\cities-04.jpg" />
+    <Content Include="wooxtravel-1.0.0\assets\images\country-01.jpg" />
+    <Content Include="wooxtravel-1.0.0\assets\images\country-02.jpg" />
+    <Content Include="wooxtravel-1.0.0\assets\images\country-03.jpg" />
+    <Content Include="wooxtravel-1.0.0\assets\images\cta-bg.jpg" />
+    <Content Include="wooxtravel-1.0.0\assets\images\deals-01.jpg" />
+    <Content Include="wooxtravel-1.0.0\assets\images\deals-02.jpg" />
+    <Content Include="wooxtravel-1.0.0\assets\images\deals-03.jpg" />
+    <Content Include="wooxtravel-1.0.0\assets\images\deals-04.jpg" />
+    <Content Include="wooxtravel-1.0.0\assets\images\heading-bg-02.jpg" />
+    <Content Include="wooxtravel-1.0.0\assets\images\heading-bg.jpg" />
+    <Content Include="wooxtravel-1.0.0\assets\images\logo.png" />
+    <Content Include="wooxtravel-1.0.0\assets\images\offers-01.jpg" />
+    <Content Include="wooxtravel-1.0.0\assets\images\offers-02.jpg" />
+    <Content Include="wooxtravel-1.0.0\assets\images\offers-03.jpg" />
+    <Content Include="wooxtravel-1.0.0\assets\js\custom.js" />
+    <Content Include="wooxtravel-1.0.0\assets\js\isotope.js" />
+    <Content Include="wooxtravel-1.0.0\assets\js\isotope.min.js" />
+    <Content Include="wooxtravel-1.0.0\assets\js\owl-carousel.js" />
+    <Content Include="wooxtravel-1.0.0\assets\js\popup.js" />
+    <Content Include="wooxtravel-1.0.0\assets\js\tabs.js" />
+    <Content Include="wooxtravel-1.0.0\deals.html" />
+    <Content Include="wooxtravel-1.0.0\index.html" />
+    <Content Include="wooxtravel-1.0.0\reservation.html" />
+    <Content Include="wooxtravel-1.0.0\vendor\bootstrap\css\bootstrap.min.css" />
+    <Content Include="wooxtravel-1.0.0\vendor\bootstrap\js\bootstrap.min.js" />
+    <Content Include="wooxtravel-1.0.0\vendor\jquery\jquery.js" />
+    <Content Include="wooxtravel-1.0.0\vendor\jquery\jquery.min.js" />
+    <Content Include="wooxtravel-1.0.0\vendor\jquery\jquery.slim.js" />
+    <Content Include="wooxtravel-1.0.0\vendor\jquery\jquery.slim.min.js" />
+    <Content Include="Areas\Admin\Views\Payment\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\LogOut\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminLayout\PartialMessageNavbar.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminLayout\PartialDestinationNavbar.cshtml" />
+    <None Include="Scripts\jquery-3.7.0.intellisense.js" />
+    <Content Include="Scripts\jquery-3.7.0.js" />
+    <Content Include="Scripts\jquery-3.7.0.min.js" />
+    <Content Include="Scripts\jquery-3.7.0.slim.js" />
+    <Content Include="Scripts\jquery-3.7.0.slim.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="wooxtravel-1.0.0\assets\webfonts\fa-brands-400.ttf" />
+    <Content Include="wooxtravel-1.0.0\assets\webfonts\fa-brands-400.woff2" />
+    <Content Include="wooxtravel-1.0.0\assets\webfonts\fa-regular-400.ttf" />
+    <Content Include="wooxtravel-1.0.0\assets\webfonts\fa-regular-400.woff2" />
+    <Content Include="wooxtravel-1.0.0\assets\webfonts\fa-solid-900.ttf" />
+    <Content Include="wooxtravel-1.0.0\assets\webfonts\fa-solid-900.woff2" />
+    <Content Include="wooxtravel-1.0.0\assets\webfonts\fa-v4compatibility.ttf" />
+    <Content Include="wooxtravel-1.0.0\assets\webfonts\fa-v4compatibility.woff2" />
+    <Content Include="wooxtravel-1.0.0\vendor\jquery\jquery.min.map" />
+    <Content Include="wooxtravel-1.0.0\vendor\jquery\jquery.slim.min.map" />
+    <Content Include="Views\Default\PartialHead.cshtml" />
+    <Content Include="Views\Default\PartialScript.cshtml" />
+    <Content Include="Views\Default\PartialNavbar.cshtml" />
+    <Content Include="Views\Default\PartialBanner.cshtml" />
+    <Content Include="Views\Default\PartialCountry.cshtml" />
+    <Content Include="Views\Default\PartialFooter.cshtml" />
+    <Content Include="Views\ErrorPages\Page404.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Register\Index.cshtml" />
+    <Content Include="Views\Default\Index.cshtml" />
+    <Content Include="Views\Default\PartialDetail.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Areas\Admin\Views\Chart\" />
+    <Folder Include="Areas\Admin\Views\Shared\" />
+    <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap.rtl.min.css.map" />
+    <Content Include="Content\bootstrap.rtl.css.map" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-utilities.rtl.min.css.map" />
+    <Content Include="Content\bootstrap-utilities.rtl.css.map" />
+    <Content Include="Content\bootstrap-utilities.min.css.map" />
+    <Content Include="Content\bootstrap-utilities.css.map" />
+    <Content Include="Content\bootstrap-reboot.rtl.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.rtl.css.map" />
+    <Content Include="Content\bootstrap-reboot.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.css.map" />
+    <Content Include="Content\bootstrap-grid.rtl.min.css.map" />
+    <Content Include="Content\bootstrap-grid.rtl.css.map" />
+    <Content Include="Content\bootstrap-grid.min.css.map" />
+    <Content Include="Content\bootstrap-grid.css.map" />
+    <None Include="packages.config" />
+    <Content Include="Scripts\bootstrap.min.js.map" />
+    <Content Include="Scripts\bootstrap.js.map" />
+    <Content Include="Scripts\bootstrap.esm.min.js.map" />
+    <Content Include="Scripts\bootstrap.esm.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.min.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.js.map" />
+    <Content Include="Scripts\jquery-3.7.0.slim.min.map" />
+    <Content Include="Scripts\jquery-3.7.0.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202412162119521_mig2.resx">
+      <DependentUpon>202412162119521_mig2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202412162128172_mig3.resx">
+      <DependentUpon>202412162128172_mig3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202412201019586_mig4.resx">
+      <DependentUpon>202412201019586_mig4.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>51682</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44344/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.5.1\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.5.1\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.5.1\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

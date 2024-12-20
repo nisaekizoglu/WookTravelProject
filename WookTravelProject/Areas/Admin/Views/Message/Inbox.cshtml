@@ -1,0 +1,55 @@
+﻿@model List<WookTravelProject.Entities.Message>
+
+@{
+    ViewBag.Title = "Inbox";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+    int count = 0;
+}
+
+<div class="container">
+    <div class="page-inner">
+
+        <div class="row">
+            <div class="col-md-12">
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">Gelen Mesaj Sayfası</div>
+                    </div>
+                    <div class="card-body">
+
+                        <table class="table mt-3">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Gönderici</th>
+                                    <th scope="col">Konu</th>
+                                    <th scope="col">Tarih</th>
+                                    <th scope="col">Durum</th>
+                                    <th scope="col">Mesajı Aç</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    count++;
+                                    <tr>
+                                        <td>@count</td>
+                                        <td>@item.SenderMail</td>
+                                        <td>@item.Subject</td>
+                                        <td>@item.SendDate.ToShortDateString()</td>
+                                        <td>@item.IsRead</td>
+                                        <td><a href="#" class="btn btn-warning">Mesajı Aç</a></td>
+                                    </tr>
+                                }
+
+                            </tbody>
+                        </table>
+                        <a href="/Admin/Message/SendMessage/" class="btn btn-primary">Yeni Mesaj Gönderin</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

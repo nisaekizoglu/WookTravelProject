@@ -1,0 +1,137 @@
+﻿@model List<WookTravelProject.Entities.Destination>
+
+<style>
+    .visit-country {
+        background-color: #ffffff;
+    }
+
+    .image img {
+        width: 300px;
+        height: 200px;
+        object-fit: cover;
+    }
+</style>
+
+<div class="visit-country">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5">
+                <div class="section-heading">
+                    <br />
+                    <h2>Popüler Tur ve Seyahat Rotalarımız</h2>
+                    <p>Dünyanın Dört Bir Noktasına Alanında Uzman Rehberlerle Seyahata Hazır Mısınız? </p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="items">
+                    <div class="row">
+
+                        @foreach (var item in Model)
+                        {
+                            <div class="col-lg-12">
+                                <div class="item">
+                                    <div class="row">
+                                        <div class="col-lg-4 col-sm-5">
+                                            <div class="image">
+                                                <img src="@item.ImageUrl" alt="">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-8 col-sm-7">
+                                            <div class="right-content">
+                                                <h4>@item.Title</h4>
+                                                <span>@item.Country /@item.City</span>
+
+                                                <div class="main-button">
+                                                    <a href="/Default/PartialDetail/@item.DestinationId">Tur Detaylarını Gör</a>
+                                                </div>
+
+
+                                                @{
+                                                    var descriptionPreview = item.Description.Length > 300 ? item.Description.Substring(0, 300) : item.Description;
+                                                    var fullDescription = item.Description;
+                                                }
+                                                <p id="description-@item.DestinationId">@descriptionPreview...</p>
+                                                <a href="javascript:void(0);" id="toggle-description-@item.DestinationId" onclick="toggleDescription(@item.DestinationId)">Devamını Oku</a>
+
+                                                <div id="full-description-@item.DestinationId" style="display:none;">
+                                                    <p>@fullDescription</p>
+                                                </div>
+
+                                                <script>
+                                                    function toggleDescription(id) {
+                                                        var fullDescription = document.getElementById("full-description-" + id);
+                                                        var previewDescription = document.getElementById("description-" + id);
+                                                        var toggleLink = document.getElementById("toggle-description-" + id);
+
+                                                        if (fullDescription.style.display === "none") {
+                                                            fullDescription.style.display = "block";
+                                                            previewDescription.style.display = "none";
+                                                            toggleLink.innerHTML = "Kısa Göster";  // Tıklayınca "Kısa Göster" yazsın
+                                                        } else {
+                                                            fullDescription.style.display = "none";
+                                                            previewDescription.style.display = "block";
+                                                            toggleLink.innerHTML = "Devamını Oku";  // Başka seferde "Devamını Oku" yazsın
+                                                        }
+                                                    }
+                                                </script>
+
+
+
+                                                <ul class="info">
+                                                    <li><i class="fa fa-user"></i> @item.DayNight Gün - @(item.DayNight-1) Gece</li>
+                                                    <li><i class="fa fa-globe"></i> @item.Price ₺</li>
+                                                    <li><i class="fa fa-home"></i>@item.Capacity Kişi</li>
+                                                </ul>
+                                                <div class="text-button">
+                                                    <a href="about.html">Rehberi Görün <i class="fa fa-arrow-right"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        }
+
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <ul class="page-numbers">
+                                @if (ViewBag.CurrentPage > 1)
+                                {
+                                    <li>
+                                        <a href="javascript:void(0);" onclick="loadPage(@(ViewBag.CurrentPage - 1))">
+                                            <i class="fa fa-arrow-left"></i>
+                                        </a>
+                                    </li>
+                                }
+                                @for (int i = 1; i <= ViewBag.TotalPages; i++)
+                                {
+                                    <li class="@(i == ViewBag.CurrentPage ? "active" : "")">
+                                        <a href="javascript:void(0);" onclick="loadPage(@i)">@i</a>
+                                    </li>
+                                }
+                                @if (ViewBag.CurrentPage < ViewBag.TotalPages)
+                                {
+                                    <li>
+                                        <a href="javascript:void(0);" onclick="loadPage(@(ViewBag.CurrentPage + 1))">
+                                            <i class="fa fa-arrow-right"></i>
+                                        </a>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+
+        </div>
+
+    </div>
+</div>
+
+

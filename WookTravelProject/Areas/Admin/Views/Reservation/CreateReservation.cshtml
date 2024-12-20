@@ -1,0 +1,43 @@
+﻿@model WookTravelProject.Entities.Reservation
+@{
+    ViewBag.Title = "CreateReservation";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="container">
+    <div class="page-inner">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">Rezervasyon İşlemleri</div>
+                    </div>
+                    <div class="card-body">
+
+                        <form method="post">
+                            <label>Rezervasyon Yapan Kişi</label>
+                            @Html.TextAreaFor(x => x.Name, new { @class = "form-control" })
+                            <br />
+                            <label>Telefon Numarası</label>
+                            @Html.TextAreaFor(x => x.Phone, new { @class = "form-control" })
+                            <br />
+                            <label>Kişi Sayısı</label>
+                            @Html.TextAreaFor(x => x.PersonCount, new { @class = "form-control" })
+                            <br />
+                            <label>Rezervasyon Tarihi</label>
+                            @Html.TextAreaFor(x => x.ReservationsDate, new { @class = "form-control" })
+                            <br />
+                            <label>Tur Adı</label>
+                            @Html.TextAreaFor(x => x.Description, new { @class = "form-control" })
+                            <button class="btn btn-primary">Rezervasyon Oluştur</button>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

@@ -1,0 +1,48 @@
+﻿@model WookTravelProject.Entities.Destination
+@{
+    ViewBag.Title = "CreateDestination";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="container">
+    <div class="page-inner">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">Destinasyon İşlemleri</div>
+                    </div>
+                    <div class="card-body">
+
+                        <form method="post">
+                            <label>Ülke Adı</label>
+                            @Html.TextAreaFor(x => x.Country, new { @class = "form-control" })
+                            <br />
+                            <label>Şehir Adı</label>
+                            @Html.TextAreaFor(x => x.City, new { @class = "form-control" })
+                            <br />
+                            <label>Tur Başlığı</label>
+                            @Html.TextAreaFor(x => x.Title, new { @class = "form-control" })
+                            <br />
+                            <label>Gün-Gece</label>
+                            @Html.TextAreaFor(x => x.DayNight, new { @class = "form-control" })
+                            <br />
+                            <label>Kapak Görseli Url</label>
+                            @Html.TextAreaFor(x => x.ImageUrl, new { @class = "form-control" })
+                            <br />
+                            <label>Tur Fiyatı</label>
+                            @Html.TextAreaFor(x => x.Price, new { @class = "form-control" })
+                            <br />
+                            <label>Açıklama</label>
+                            @Html.TextAreaFor(x => x.Description, new { @class = "form-control" })
+                            <br />
+                            <button class="btn btn-primary">Tur Rotasını Oluştur</button>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

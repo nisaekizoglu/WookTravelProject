@@ -1,0 +1,38 @@
+﻿@model WookTravelProject.Entities.Message
+
+@{
+    ViewBag.Title = "SendMessage";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="container">
+    <div class="page-inner">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">Yeni Mesaj Gönderme Sayfası</div>
+                    </div>
+                    <div class="card-body">
+
+                        <form method="post">
+                            <label>Alıcı Email</label>
+                            @Html.TextAreaFor(x => x.ReceiverMail, new { @class = "form-control" })
+                            <br />
+                            <label>Konu</label>
+                            @Html.TextAreaFor(x => x.Subject, new { @class = "form-control" })
+                            <br />
+                            <label>Mesajınız</label>
+                            @Html.TextAreaFor(x => x.Content, 5, 0, new { @class = "form-control" })
+                            <br />
+                            <button class="btn btn-primary">Mesajı Gönder</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

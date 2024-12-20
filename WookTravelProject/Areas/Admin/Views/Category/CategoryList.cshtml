@@ -1,0 +1,52 @@
+﻿@model List<WookTravelProject.Entities.Category>
+
+@{
+    ViewBag.Title = "CategoryList";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="container">
+    <div class="page-inner">
+        <div class="page-header">
+            <h3 class="fw-bold mb-3">Kategoriler</h3>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">Kategori İşlemleri</div>
+                    </div>
+                    <div class="card-body">
+
+                        <table class="table mt-3">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Kategori Id</th>
+                                    <th scope="col">Kategori Adı</th>
+                                    <th scope="col">Sil</th>
+                                    <th scope="col">Güncelle</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>@item.CategoryId</td>
+                                        <td>@item.CategoryName</td>
+                                        <td><a href="/Admin/Category/DeleteCategory/@item.CategoryId" class="btn btn-danger">Sil</a></td>
+                                        <td><a href="/Admin/Category/UpdateCategory/@item.CategoryId" class="btn btn-success">Güncelle</a></td>
+                                    </tr>
+                                }
+
+                            </tbody>
+                        </table>
+                        <a href="/Admin/Category/CreateCategory" class="btn btn-primary">Yeni Kategori Girişi</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+

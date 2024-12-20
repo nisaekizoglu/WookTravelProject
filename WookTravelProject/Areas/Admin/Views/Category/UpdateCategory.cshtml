@@ -1,0 +1,39 @@
+﻿@model WookTravelProject.Entities.Category
+@{
+    ViewBag.Title = "UpdateCategory";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="container">
+    <div class="page-inner">
+        <div class="row">
+            <div class="col-md-12">
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-title">Kategori İşlemleri</div>
+                    </div>
+                    <div class="card-body">
+
+                        <form method="post">
+                            @Html.HiddenFor(x => x.CategoryId)
+                            <label>Kategori Adı</label>
+                            @Html.TextAreaFor(x => x.CategoryName, new { @class = "form-control" })
+                            <br />
+                            <label>Kategori Durumu</label>
+                            @Html.TextAreaFor(x => x.CategoryStatus, new { @class = "form-control" })
+                            <br />
+                            <button class="btn btn-primary">Kategoriyi Güncelle</button>
+                        </form>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+

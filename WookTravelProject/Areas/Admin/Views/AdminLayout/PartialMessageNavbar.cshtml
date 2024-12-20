@@ -1,0 +1,67 @@
+﻿@model List<WookTravelProject.Entities.Message>
+
+<li class="nav-item topbar-icon dropdown hidden-caret">
+    <a class="nav-link dropdown-toggle"
+       href="#"
+       id="messageDropdown"
+       role="button"
+       data-bs-toggle="dropdown"
+       aria-haspopup="true"
+       aria-expanded="false">
+        <i class="fa fa-envelope"></i>
+        <span class="notification">@ViewBag.MessageCount</span>
+    </a>
+    <ul class="dropdown-menu messages-notif-box animated fadeIn"
+        aria-labelledby="messageDropdown">
+        <li>
+            <div class="dropdown-title d-flex justify-content-between align-items-center">
+                Mesajlar
+            </div>
+        </li>
+        <li>
+            @{
+                string GetTimeAgo(DateTime sendDate)
+                {
+                    var timeSpan = DateTime.Now - sendDate;
+
+                    if (timeSpan.TotalSeconds < 60)
+                        return $"{(int)timeSpan.TotalSeconds} saniye önce";
+                    if (timeSpan.TotalMinutes < 60)
+                        return $"{(int)timeSpan.TotalMinutes} dakika önce";
+                    if (timeSpan.TotalHours < 24)
+                        return $"{(int)timeSpan.TotalHours} saat önce";
+                    if (timeSpan.TotalDays < 30)
+                        return $"{(int)timeSpan.TotalDays} gün önce";
+                    if (timeSpan.TotalDays < 365)
+                        return $"{(int)(timeSpan.TotalDays / 30)} ay önce";
+
+                    return $"{(int)(timeSpan.TotalDays / 365)} yıl önce";
+                }
+            }
+            <div class="message-notif-scroll scrollbar-outer">
+                <div class="notif-center">
+                    @foreach (var item in Model)
+                    {
+                        <a href="#">
+                            <div class="notif-img">
+                                <img src="https://i.hizliresim.com/468qqmy.png"
+                                     alt="Envelope" />
+                            </div>
+                            <div class="notif-content">
+                                <span class="subject">@item.SenderMail</span>
+                                <span class="block"> @item.Subject </span>
+                                <span class="time">@GetTimeAgo(item.SendDate)</span>
+                            </div>
+                        </a>
+                    }
+                </div>
+            </div>
+        </li>
+        <li>
+            <a class="see-all" href="/Admin/Message/Inbox/">
+                Tüm Mesajları Gör <i class="fa fa-angle-right"></i>
+            </a>
+        </li>
+    </ul>
+</li>
+

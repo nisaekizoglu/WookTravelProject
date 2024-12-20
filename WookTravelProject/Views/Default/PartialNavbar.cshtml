@@ -1,0 +1,107 @@
+﻿@model WookTravelProject.Entities.Reservation
+
+<div id="js-preloader" class="js-preloader">
+    <div class="preloader-inner">
+        <span class="dot"></span>
+        <div class="dots">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+</div>
+<!-- ***** Preloader End ***** -->
+<!-- ***** Header Area Start ***** -->
+<header class="header-area header-sticky">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <nav class="main-nav">
+
+                    <a href="index.html" class="logo">
+                        <img src="/wooxtravel-1.0.0/assets/images/logo.png" alt="">
+                    </a>
+
+                    <ul class="nav">
+                        <li><a href="/Default/Index/" class="active">Ana Sayfa</a></li>
+                        <li><a href="about.html">Hakkımızda</a></li>
+                        <li><a href="deals.html">Rotalar</a></li>
+                        <li>
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
+                                Rezervasyon Yap
+                            </a>
+                        </li>
+
+                        <li><a href="reservation.html">Kayıt Ol</a></li>
+                    </ul>
+                    <a class='menu-trigger'>
+                        <span>Menu</span>
+                    </a>
+
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" aria-labelledby="exampleModalCenterLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterLabel">Rezervasyon</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form method="post" action="/Default/Reservation">
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label class="form-label text-dark">İsim-Soyisim</label>
+                        @Html.TextAreaFor(x => x.Name, new { @class = "form-control", id = "name", rows = "2" })
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label text-dark">Telefon Numarası</label>
+                        @Html.TextAreaFor(x => x.Phone, new { @class = "form-control", id = "phone", rows = "2" })
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label text-dark">Kişi Sayısı</label>
+                        @Html.TextAreaFor(x => x.PersonCount, new { @class = "form-control", id = "personCount", rows = "2" })
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label text-dark">Rezervasyon Tarihi</label>
+                        @Html.TextAreaFor(x => x.ReservationsDate, new { @class = "form-control", id = "reservationsDate", rows = "2" })
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label text-dark">Rezervasyon Yapmak İstediğiniz Tur</label>
+                        @Html.TextAreaFor(x => x.Description, new { @class = "form-control", id = "description", rows = "2" })
+                    </div>
+
+                    <!-- Başarı mesajı -->
+                    @if (TempData["SuccessMessage"] != null)
+                    {
+                        <div id="successMessageDiv" class="alert alert-success">
+                            @TempData["SuccessMessage"]
+                        </div>
+                    }
+
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Rezervasyon Yap</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Modalı otomatik açmak için JavaScript -->
+@if (TempData["SuccessMessage"] != null)
+{
+    <script>
+        window.onload = function () {
+            var modalElement = new bootstrap.Modal(document.getElementById('exampleModalCenter'));
+            modalElement.show();
+        }
+    </script>
+}
+
+
+

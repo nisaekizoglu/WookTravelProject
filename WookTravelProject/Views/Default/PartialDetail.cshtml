@@ -1,0 +1,82 @@
+﻿﻿@model List<WookTravelProject.Entities.Destination>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    @Html.Action("PartialHead", "Default")
+
+</head>
+
+<body>
+
+
+    @Html.Action("PartialNavbar", "Default")
+
+    <br />
+
+    @foreach (var item in Model)
+    {
+        <div class="reservation-form">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div id="map">
+                            <img src="@item.ImageUrl" width="100%" height="450px" frameborder="0" style="border:0; border-top-left-radius: 23px; border-top-right-radius: 23px;" allowfullscreen=""></img>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <form id="reservation-form" name="gs" method="submit" role="search" action="#">
+                            <div class="row">
+
+                                <!-- Tur Bilgileri -->
+                                <div class="row mb-4">
+                                    <div class="col-lg-12 text-center">
+                                        <h1 class="tour-title">@item.Title</h1>
+                                        <h4 class="tour-location text-muted">@item.Country / @item.City</h4>
+                                    </div>
+                                </div>
+                                <!-- Tur Açıklaması -->
+                                <div class="row mb-4">
+                                    <div class="col-lg-12">
+                                        <p class="tour-description" style="font-size: 18px; line-height: 1.6;">
+                                            @item.Description
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <!-- Tur Fiyatı ve Kapasitesi -->
+                                <div class="row mb-4">
+                                    <div class="col-md-4 text-center">
+                                        <h5 class="text-primary">Fiyat</h5>
+                                        <p style="font-size: 20px;">@item.Price TL</p>
+                                    </div>
+                                    <div class="col-md-4 text-center">
+                                        <h5 class="text-primary">Kapasite</h5>
+                                        <p style="font-size: 20px;">@item.Capacity kişi</p>
+                                    </div>
+                                    <div class="col-md-4 text-center">
+                                        <h5 class="text-primary">Kaç Gün - Kaç Gece</h5>
+                                        <p style="font-size: 20px;">@item.DayNight Gün - @(item.DayNight-1) Gece</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+    @Html.Action("PartialFooter", "Default")
+
+
+
+    <!-- Scripts -->
+    <!-- Bootstrap core JavaScript -->
+    @Html.Action("PartialScript", "Default")
+
+</body>
+</html>
+<!-- Bootstrap CSS -->

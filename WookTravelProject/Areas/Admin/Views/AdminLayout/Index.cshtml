@@ -1,0 +1,23 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+@Html.Action("PartialHead", "AdminLayout", "Admin")
+<body>
+    <div class="wrapper">
+
+        @Html.Action("PartialSideBar", "AdminLayout", "Admin")
+
+        @Html.Action("PartialNavbar", "AdminLayout", "Admin")
+
+        @RenderBody()
+
+        @Html.Action("PartialFooter", "AdminLayout", "Admin")
+    </div>
+    @Html.Action("PartialScript", "AdminLayout", "Admin")
+
+</body>
+</html>
