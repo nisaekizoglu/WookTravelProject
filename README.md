@@ -1,10 +1,9 @@
 # 🗺️ WOOKTRAVEL PROJESİ 🗺️ #
 
 ## Projeye Genel Bakış ##
-***
 
 ### Admin Paneli ###
-***
+
 🌈 Kullanıcı admin paneline giriş yapmak istediği zaman Login/Register sayfası karşılar. 
 
 🍒 Kayıtlı olan Admin kendi bilgilerini kullanarak giriş yapar ve profilim sayfasına yönlendirilir.
@@ -24,7 +23,7 @@
 🍀 Admin Panelinin Navbar kısmında **Profilim**, **Mesajlar** ve **Turlar** bulunur. Admin **Turlar** bölümünde son eklenen 4 turu pop-up şeklinde açılan sayfada görüntüleyebilir. İstediği turu ana sayfaya giderek inceleyebilir.
 
 ### Kullanıcı Arayüzü ###
-***
+
 🦜 Kullanıcı sayfaya girdiği zaman son eklenen 4 tur PartialBanner üzerinde gösterilir. Tura ait *fiyat*, *kapasite*, *gün/gece* bilgisi verilir.
 
 🤍 Popüler Tur ve Seyahatlar kısmında son eklenen 4 tur paging işlemi kullanılarak gösterilir. Kullanıcı *tur detaylarına* tıklayarak popup üzerinde detaylı bilgi elde edebilir. 
@@ -32,7 +31,6 @@
 💥 PartialNavbar kısmında bulunan *Rezervasyon* bölümü popup şeklinde açılarak kullanıcının rezervasyon yapması sağlanır ve veritabanına kaydedilir.
 
 ## KULLANILAN TEKNOLOJİLER VE UYGULAMALAR ##
-***
 
 ☑️ ASP.NET MVC
 
@@ -61,7 +59,6 @@
 # PROJE GÖRSELLERİ #
 
 ## KULLANICI ARAYÜZ TASARIMI ##
-***
 
 ![Ekran görüntüsü 2024-12-20 124015](https://github.com/user-attachments/assets/811d6acb-e8cc-488a-a1c7-80e047433d43)
 
